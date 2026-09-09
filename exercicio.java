@@ -1,15 +1,32 @@
-public class Sistema {
+public class SistemaAvaliacaoAluno {
+
+    private static final double MEDIA_MINIMA_APROVACAO = 6.0;
+
     public static void main(String[] args) {
-        String n = &quot;Carlos&quot;;
-        double a = 8;
-        double b = 7;
-        double c = (a + b) / 2;
-    System.out.println(&quot;Aluno: &quot; + n);
-    System.out.println(&quot;Media: &quot; + c);
-    if (c &gt;= 6) {
-    System.out.println(&quot;Aprovado&quot;);
-    } else {
-    System.out.println(&quot;Reprovado&quot;);
-            }
+        String nomeAluno = "Carlos";
+        double nota1 = 8;
+        double nota2 = 7;
+
+        double media = calcularMedia(nota1, nota2);
+        boolean aprovado = verificarAprovacao(media);
+
+        exibirResultado(nomeAluno, media, aprovado);
+    }
+
+    // Calcula a média aritmética entre duas notas
+    private static double calcularMedia(double nota1, double nota2) {
+        return (nota1 + nota2) / 2;
+    }
+
+    // Verifica se a média atinge o mínimo necessário para aprovação
+    private static boolean verificarAprovacao(double media) {
+        return media >= MEDIA_MINIMA_APROVACAO;
+    }
+
+    // Exibe os dados do aluno e sua situação final
+    private static void exibirResultado(String nomeAluno, double media, boolean aprovado) {
+        System.out.println("Aluno: " + nomeAluno);
+        System.out.println("Média: " + media);
+        System.out.println(aprovado ? "Aprovado" : "Reprovado");
     }
 }
